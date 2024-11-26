@@ -2,6 +2,8 @@ class Solution {
   #elevators
   #floors
 
+  #currentlyWaiting
+
   constructor (elevators, floors) {
     this.#elevators = elevators
     this.#floors = floors
@@ -10,6 +12,9 @@ class Solution {
   }
 
   #initialize () {
+    this.#currentlyWaiting = new Array(this.#floors.length).map(() => [0, 0])
+    console.log(this.#currentlyWaiting)
+
     for (let i = 0; i < this.#elevators.length; ++i) {
       const elevator = this.#elevators[i]
       elevator.on('idle', () => this.#onElevatorIdle(i))
@@ -50,8 +55,7 @@ class Solution {
 
 ;({
   init: (elevators, floors) => {
-    this.solution = new Solution()
-    this.solution.init(elevators, floors)
+    this.solution = new Solution(elevators, floors)
   },
   update: (dt, _elevators, _floors) => {
     this.solution.update(dt)

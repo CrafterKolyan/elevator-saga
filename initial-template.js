@@ -50,8 +50,7 @@ class Solution {
 
 ;({
   init: (elevators, floors) => {
-    this.solution = new Solution()
-    this.solution.init(elevators, floors)
+    this.solution = new Solution(elevators, floors)
   },
   update: (dt, _elevators, _floors) => {
     this.solution.update(dt)
