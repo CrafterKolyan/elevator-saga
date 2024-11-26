@@ -1,9 +1,72 @@
+class Elevator {
+  #elevator
+
+  constructor (elevator) {
+    this.#elevator = elevator
+  }
+
+  goToFloor (floorIdx) {
+    return this.#elevator.goToFloor(floorIdx)
+  }
+
+  currentFloor () {
+    return this.#elevator.currentFloor()
+  }
+
+  checkDestinationQueue () {
+    return this.#elevator.checkDestinationQueue()
+  }
+
+  get destinationQueue () {
+    return this.#elevator.destinationQueue
+  }
+
+  set destinationQueue (value) {
+    this.#elevator.destinationQueue = value
+  }
+
+  goingUpIndicator (activated) {
+    return this.#elevator.goingUpIndicator(activated)
+  }
+
+  goingDownIndicator (activated) {
+    return this.#elevator.goingDownIndicator(activated)
+  }
+
+  maxPassengerCount () {
+    return this.#elevator.maxPassengerCount()
+  }
+
+  loadFactor () {
+    return this.#elevator.loadFactor()
+  }
+
+  destinationDirection () {
+    return this.#elevator.destinationDirection()
+  }
+
+  getPressedFloors () {
+    return this.#elevator.getPressedFloors()
+  }
+
+  on (callback_name, callback) {
+    return this.#elevator.on(callback_name, callback)
+  }
+
+  stop () {
+    return this.#elevator.stop()
+  }
+}
+
 class Solution {
   #elevators
   #floors
 
   constructor (elevators, floors) {
-    this.#elevators = elevators
+    this.#elevators = new Array(elevators.length)
+      .fill(undefined)
+      .map((_, index) => new Elevator(elevators[index]))
+
     this.#floors = floors
 
     this.#initialize()
