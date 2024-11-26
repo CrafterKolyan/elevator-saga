@@ -46,5 +46,5 @@ class Solution {
     console.log(solution)
     solution.init()
   },
-  update: (dt, _elevators, _floors) => {}
+  update: (_dt, _elevators, _floors) => {}
 })
