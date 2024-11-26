@@ -5,9 +5,11 @@ class Solution {
   constructor (elevators, floors) {
     this.#elevators = elevators
     this.#floors = floors
+
+    this.#initialize()
   }
 
-  init () {
+  #initialize () {
     for (let i = 0; i < this.#elevators.length; ++i) {
       const elevator = this.#elevators[i]
       elevator.on('idle', () => this.#onElevatorIdle(i))
@@ -31,6 +33,12 @@ class Solution {
     }
   }
 
+  update (dt) {
+    this.#onUpdate(dt)
+  }
+
+  #onUpdate (dt) {}
+
   #onElevatorIdle (elevatorIdx) {}
   #onElevatorFloorButtonPressed (elevatorIdx, floorIdx) {}
   #onElevatorPassingFloor (elevatorIdx, floorIdx, direction) {}
@@ -42,9 +50,10 @@ class Solution {
 
 ;({
   init: (elevators, floors) => {
-    const solution = new Solution(elevators, floors)
-    console.log(solution)
-    solution.init()
+    this.solution = new Solution()
+    this.solution.init(elevators, floors)
   },
-  update: (_dt, _elevators, _floors) => {}
+  update: (dt, _elevators, _floors) => {
+    this.solution.update(dt)
+  }
 })
