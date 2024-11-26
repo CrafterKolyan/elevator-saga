@@ -22,7 +22,7 @@ class Elevator {
   }
 
   set destinationQueue (value) {
-    this.#elevator.destinationQueue = value
+    return (this.#elevator.destinationQueue = value)
   }
 
   goingUpIndicator (activated) {
