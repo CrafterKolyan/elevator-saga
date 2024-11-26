@@ -12,7 +12,9 @@ class Solution {
   }
 
   #initialize () {
-    this.#currentlyWaiting = new Array(this.#floors.length).map(() => [0, 0])
+    this.#currentlyWaiting = new Array(this.#floors.length)
+      .fill(undefined)
+      .map(() => [0, 0])
     console.log(this.#currentlyWaiting)
 
     for (let i = 0; i < this.#elevators.length; ++i) {
